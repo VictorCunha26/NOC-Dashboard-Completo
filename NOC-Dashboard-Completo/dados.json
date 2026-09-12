@@ -1,0 +1,21 @@
+{
+  "infraestrutura": [
+    { "id": 1, "tipo": "Link VSAT (Hub Principal)", "target": "Satélite Star One D2", "latencia": "580ms" },
+    { "id": 2, "tipo": "Link VSAT (BGAN Backup)", "target": "Satélite Inmarsat", "latencia": "850ms" },
+    { "id": 3, "tipo": "Roteamento OSPF", "target": "Core Interno (10.0.0.1)", "latencia": "2ms" },
+    { "id": 4, "tipo": "Sessão BGP", "target": "Operadora AS-1042", "latencia": "12ms" },
+    { "id": 5, "tipo": "Link LTE-Móvel", "target": "Antena Celular ERB", "latencia": "45ms" }
+  ],
+  "frota": [
+    { "id": "V-01", "modelo": "🚌", "tipo": "Ônibus", "vel": "85", "gps": "-23.55, -46.63" },
+    { "id": "V-02", "modelo": "🚚", "tipo": "Caminhão", "vel": "70", "gps": "-22.90, -43.20" },
+    { "id": "V-03", "modelo": "🏍️", "tipo": "Moto", "vel": "110", "gps": "-19.92, -43.93" },
+    { "id": "V-04", "modelo": "🚗", "tipo": "Carro", "vel": "110", "gps": "-25.42, -49.27" },
+    { "id": "V-05", "modelo": "🛻", "tipo": "Caminhonete", "vel": "80", "gps": "-30.03, -51.23" },
+    { "id": "V-06", "modelo": "🚐", "tipo": "Van", "vel": "75", "gps": "-15.79, -47.88" },
+    { "id": "V-07", "modelo": "🚙", "tipo": "SUV", "vel": "100", "gps": "-12.97, -38.50" },
+    { "id": "V-08", "modelo": "🏎️", "tipo": "Esportivo", "vel": "140", "gps": "-03.11, -60.02" },
+    { "id": "V-09", "modelo": "🚜", "tipo": "Trator", "vel": "30", "gps": "-16.68, -49.25" },
+    { "id": "V-10", "modelo": "🚑", "tipo": "Ambulância", "vel": "120", "gps": "-20.31, -40.31" }
+  ]
+}

@@ -1,0 +1,74 @@
+/* 1. Background Fluido (Dark Mode) */
+body {
+  margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(-45deg, #09121c, #162635, #1d3342, #000000);
+  background-size: 400% 400%; animation: gradientBG 20s ease infinite; color: #e0e0e0;
+  min-height: 100vh; overflow-x: hidden;
+}
+@keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+/* 2. Glassmorphism e Globo Terrestre (Link para Maps) */
+.glass-card {
+  background: rgba(18, 24, 31, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px; color: #fff; transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.glass-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.6); }
+.spinning-globe {
+  width: 35px; height: 35px; border-radius: 50%; background-color: #0b5ed7;
+  background-image: url('https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/planets/earth_atmos_2048.jpg');
+  background-size: 200% 100%; animation: spin-earth 12s linear infinite;
+  box-shadow: inset -5px -3px 10px rgba(0,0,0,0.8), 0 0 12px rgba(13, 202, 240, 0.6);
+  display: inline-block; vertical-align: middle; margin-right: 12px; cursor: pointer; transition: 0.2s;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.spinning-globe:hover { transform: scale(1.1); box-shadow: inset -5px -2px 10px rgba(0,0,0,0.8), 0 0 15px rgba(13, 202, 240, 0.9); }
+@keyframes spin-earth { 0% { background-position: 0% 0; } 100% { background-position: -200% 0; } }
+
+/* 3. LEDs e Barras de Progresso */
+.led-indicator { width: 14px; height: 14px; border-radius: 50%; display: inline-block; margin-right: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.5); }
+.led-up { background-color: #28a745; box-shadow: 0 0 10px #28a745, inset 0 0 3px #145523; animation: blink-slow 2s infinite alternate; }
+.led-down { background-color: #dc3545; box-shadow: 0 0 15px #dc3545, inset 0 0 3px #721c24; animation: blink-fast 0.5s infinite alternate; }
+@keyframes blink-slow { 0% { opacity: 0.6; } 100% { opacity: 1; } }
+@keyframes blink-fast { 0% { opacity: 0.2; } 100% { opacity: 1; } }
+.progress-tech { background: rgba(255,255,255,0.1); height: 8px; border-radius: 4px; overflow: hidden; margin-top: 5px;}
+.progress-tech-bar { height: 100%; transition: width 1s ease-in-out; }
+
+/* 4. Cenário Animado, Estrada e Vento */
+.cenario {
+  position: relative; height: 140px; background: linear-gradient(to bottom, #0d1a2b 0%, #1a3045 100%);
+  overflow: hidden; border-radius: 12px 12px 0 0; border-bottom: 4px solid #111;
+}
+.grid-overlay {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 20px 20px; pointer-events: none;
+}
+.parallax-bg {
+  position: absolute; bottom: 35px; width: 200%; height: 50px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 50' preserveAspectRatio='none'%3E%3Cpath d='M0 50 L10 20 L25 40 L45 10 L60 45 L80 15 L100 50 Z' fill='rgba(255,255,255,0.03)'/%3E%3C/svg%3E");
+  animation: moverFundo 15s linear infinite;
+}
+.estrada { position: absolute; bottom: 0; width: 100%; height: 35px; background: #222; border-top: 2px solid #444; }
+.linhas-estrada {
+  position: absolute; bottom: 15px; left: -100%; width: 300%; height: 3px;
+  background-image: repeating-linear-gradient(90deg, #ffd700 0px, #ffd700 40px, transparent 40px, transparent 80px);
+  animation: passarEstrada 0.6s linear infinite;
+}
+.veiculo-container {
+  position: absolute; bottom: 12px; left: 20%; z-index: 2; font-size: 3.5rem; filter: drop-shadow(0px 8px 4px rgba(0,0,0,0.8));
+  animation: suspensaoSuave 1s ease-in-out infinite alternate;
+}
+.vento { position: absolute; bottom: 30px; width: 100%; height: 60px; pointer-events: none; z-index: 3; }
+.linha-vento { position: absolute; height: 2px; background: rgba(255,255,255,0.4); border-radius: 2px; animation: ventoAnim 0.5s linear infinite; }
+.offline-mode { filter: grayscale(100%) opacity(0.3); transition: 1s; }
+
+/* Keyframes de Movimento via GPU */
+@keyframes moverFundo { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+@keyframes passarEstrada { from { transform: translateX(0); } to { transform: translateX(80px); } }
+@keyframes suspensaoSuave { 0% { transform: translateY(0px); } 100% { transform: translateY(-4px); } }
+@keyframes ventoAnim { 0% { transform: translateX(-10vw); opacity: 0; } 20% { opacity: 1; } 100% { transform: translateX(100vw); opacity: 0; } }
+
+/* Menu Responsivo */
+.nav-scroll { display: flex; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 8px; -webkit-overflow-scrolling: touch; }
+.nav-scroll::-webkit-scrollbar { height: 6px; }
+.nav-scroll::-webkit-scrollbar-thumb { background: #0dcaf0; border-radius: 6px; }

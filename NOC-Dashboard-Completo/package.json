@@ -1,0 +1,29 @@
+{
+  "name": "noc-dashboard",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "server": "node backend/src/server.js",
+    "server:dev": "nodemon backend/src/server.js",
+    "migrar": "node backend/src/config/seed.js",
+    "seed": "node backend/src/config/seed.js"
+  },
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^6.26.0",
+    "bootstrap": "^5.3.3",
+    "express": "^4.19.2",
+    "sqlite3": "^5.1.7",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.0",
+    "vite": "^8.2.2",
+    "nodemon": "^3.1.4"
+  }
+}
